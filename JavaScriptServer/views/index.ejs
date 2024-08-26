@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealEyes - Deepfake Detection</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>RealEyes</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Detect Deepfakes with RealEyes</h2>
+            <p>Upload your media and detect whether it's a deepfake or authentic.</p>
+        </section>
+        <section class="upload-section">
+            <h2>Upload Your Media</h2>
+            <form id="uploadForm">
+                <label for="file">Choose file to upload (Video, Image, Audio, Text):</label>
+                <input type="file" id="file" name="file" accept="video/*, image/*, audio/*, text/*" required>
+                <button type="submit" class="cta-button">Detect</button>
+            </form>
+            <h1 style="color: white;font-size: 2rem;margin-top: 1rem;" id="restext"></h1>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const text = document.getElementById("restext");
+      const form = document.getElementById('uploadForm');
+      form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      text.style.color = "white";
+      text.innerHTML = "Detecting...";
+
+      const fileInput = document.getElementById('file');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("Please select a file.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file );
+
+      try {
+        const response = await fetch('http://localhost:3000/detect', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        console.log(result);
+        if(result.predictions[0].prediction === "Fake"){
+          text.style.color = "red";
+        }
+        else{
+          text.style.color = "green";
+        }
+        text.innerHTML = `The media is suspected to be ${result.predictions[0].prediction} with ${parseInt(parseFloat(result.predictions[0].probability)*100)}% chance`
+
+      } catch (error) {
+          console.error('Error uploading file:', error);
+    }
+});
+
+
+    </script>
+</body>
+</html>

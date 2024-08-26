@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #0A192F;
+  color: #E0E0E0;
+}
+
+header {
+  background-color: #112240;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInHeader 1s ease-in-out;
+}
+
+.logo h1 {
+  color: #64ffda;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+
+main {
+  padding: 40px;
+  text-align: center;
+  animation: slideInMain 1s ease-in-out;
+}
+
+.hero {
+  margin-bottom: 50px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: #64ffda;
+  margin-bottom: 10px;
+  animation: fadeInHero 2s ease-in-out;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  background-color: #64ffda;
+  color: #0A192F;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #52e6c1;
+}
+
+.upload-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  animation: fadeInUpload 2s ease-in-out;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+input[type="file"] {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #112240;
+  color: #E0E0E0;
+  border: 1px solid #64ffda;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+  border-color: #52e6c1;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #64ffda;
+  color: #0A192F;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #52e6c1;
+}
+
+footer {
+  background-color: #112240;
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+@keyframes fadeInHeader {
+  0% {
+      opacity: 0;
+      transform: translateY(-30px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes slideInMain {
+  0% {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInHero {
+  0% {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUpload {
+  0% {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
