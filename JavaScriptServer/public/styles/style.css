@@ -6,18 +6,18 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #0A192F;
+  background-color: #02092b;
   color: #E0E0E0;
 }
 
 header {
-  background-color: #112240;
+  background-color: #0e0329;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  animation: fadeInHeader 1s ease-in-out;
+  animation: fadeInHeader 0.5s ease-in-out;
 }
 
 .logo h1 {
@@ -30,7 +30,7 @@ header {
 main {
   padding: 40px;
   text-align: center;
-  animation: slideInMain 1s ease-in-out;
+  animation: slideInMain 0.5s ease-in-out;
 }
 
 .hero {
@@ -41,7 +41,7 @@ main {
   font-size: 2.5rem;
   color: #64ffda;
   margin-bottom: 10px;
-  animation: fadeInHero 2s ease-in-out;
+  animation: fadeInHero 0.5s ease-in-out;
 }
 
 .hero p {
@@ -67,7 +67,7 @@ main {
 .upload-section h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  animation: fadeInUpload 2s ease-in-out;
+  animation: fadeInUpload 0.5s ease-in-out;
 }
 
 form {
