@@ -35,6 +35,25 @@ app.get("/",(req,res)=>{
   res.render("index.ejs");
 })
 
+app.get("/text" , (req,res)=>{
+    res.render("detect_text.ejs");
+})
+
+app.post("/text",async (req,res)=>{
+    const {text} = req.body;
+    try {
+        let response = await axios.post("https://xhfbs62b-5000.inc1.devtunnels.ms/classify" , {
+            text:text
+        })
+        let confidence = response.data.confidence;
+        confidence = parseInt(parseFloat(confidence*100));
+        response.data.confidence = confidence;
+        res.render("detect_text.ejs" , {prediction:response.data});
+    } catch (error) {
+        res.send(error);
+    }
+})
+
 app.post('/detect', upload.single('file'), async (req, res) => {
     let filePath;
   if (!req.file) {
