@@ -65,9 +65,9 @@ app.post('/detect', upload.single('file'), async (req, res) => {
       formData.append('file', fs.createReadStream(filePath));
       let apiUrl;
       if (req.file.mimetype.startsWith('image/')) {
-          apiUrl = 'http://localhost:5000/predict';
+          apiUrl = 'http://127.0.0.1:5000/predict';
       } else if (req.file.mimetype.startsWith('video/')) {
-          apiUrl = 'http://localhost:5000/predict/video';
+          apiUrl = 'http://127.0.0.1:5000/predict/video';
       } else {
           return res.status(400).send('Unsupported file type.');
       }
