@@ -148,8 +148,10 @@ def predict_deepfake():
     # Perform prediction
     predictions = model.predict(face)
 
+
     # Format and return predictions
     formatted_predictions = format_predictions(predictions, predictions)
+    print(formatted_predictions)
     return jsonify({"predictions": formatted_predictions}), 200
 
 @app.route('/predict/video', methods=['POST'])
