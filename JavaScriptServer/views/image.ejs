@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealEyes</title>
+    <link  id="themeStylesheet" rel="stylesheet" href="/styles/real.css">
+    <style>
+        /* New styles for file input container */
+        .file-input-container {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1c1c1c;
+            color: #ccc;
+            box-shadow: 0 4px 20px rgba(0, 77, 0, 0.7); /* Green shadow */
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            max-width: 80%;
+            margin: 20px auto;
+            animation: blinkGreen 1.5s infinite;/* Center container horizontally */
+        }
+
+        .file-input-container:hover {
+            transform: translateY(-5px); /* Lift the container slightly */
+            box-shadow: 0 4px 20px rgba(0, 128, 0, 0.7); /* Darker green shadow */
+            border: 1px solid #00CC00; /* Green border on hover */
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        #mediaInput {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border: none;
+            background-color: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .file-label {
+            display: block;
+            padding: 15px 20px;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-label:hover {
+            background-color: #333333;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>RealEyes</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Detect Image/Video Deepfakes with RealEyes</h2>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <form id="mediaForm">
+                <div class="file-input-container">
+                    <label class="file-label" for="mediaInput">Choose File to be checked📸</label>
+                    <input type="file" id="mediaInput" accept="video/*,image/*">
+                </div>
+                <button type="submit" class="btn-discover">Check Media</button>
+            </form>
+            <div id="resultContainer" class="service-card">
+                <h3 id="resultHeading">Result</h3>
+                <p id="resultText">Your media analysis result will appear here.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+         document.getElementById('mediaForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var mediaInput = document.getElementById('mediaInput').files[0];
+            var formData = new FormData();
+            formData.append('file', mediaInput);
+
+            fetch('/detect', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var prediction = data.predictions[0].prediction;
+                var probability = parseInt(parseFloat(data.predictions[0].probability) * 100);
+                document.getElementById('resultText').innerText = `The media is suspected to be ${prediction} with ${probability}% chance`;
+                var stylesheet = prediction === 'Fake' ? '/styles/fake.css' : '/styles/real.css';
+                document.getElementById('themeStylesheet').setAttribute('href', stylesheet);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('resultText').innerText = 'An error occurred while processing your request.';
+            });
+        });
+    </script>
+</body>
+
+</html>

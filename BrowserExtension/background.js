@@ -27,6 +27,14 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       .then(data => {
         console.log('Success:', data);
         lastResult = data;
+        if (info.mediaType === 'video') {
+          data = {
+            predictions:data.map(pred => ({
+                prediction: pred.prediction,
+                probability: pred.probability
+            }))
+        }
+      }
         chrome.tabs.create({ url: chrome.runtime.getURL('results.html') }, (newTab) => {
           chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
             if (tabId === newTab.id && changeInfo.status === 'complete') {

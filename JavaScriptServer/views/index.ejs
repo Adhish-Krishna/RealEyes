@@ -3,113 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RealEyes - Deepfake Detection</title>
-    <link rel="stylesheet" href="/styles/style.css">
-    <style>
-        #preview-container {
-            margin-top: 1rem;
-            text-align: center;
-        }
-
-        .file-preview {
-            display: none;
-            margin: 1rem auto;
-            max-width: 100%;
-            max-height: 300px;
-        }
-
-        video.file-preview {
-            max-height: 400px;
-        }
-    </style>
+    <title>RealEyes</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>RealEyes👀</h1>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>RealEyes</h1>
+            </div>
         </div>
-        <a href="/text" class="cta-button" style="text-decoration: none;">Detect Text</a>
     </header>
 
-    <main>
-        <section class="hero">
-            <h2>Detect Deepfakes with RealEyes</h2>
-            <p>Upload your media and detect whether it's a deepfake or authentic.</p>
-        </section>
-        <section class="upload-section">
-            <h2>Upload Your Media</h2>
-            <form id="uploadForm">
-                <label for="file">Choose file to upload (Video, Image):</label>
-                <input type="file" id="file" name="file" accept="video/*, image/*" required>
-                <button type="submit" class="cta-button">Detect</button>
-            </form>
-            <h1 style="color: white;font-size: 2rem;margin-top: 1rem;" id="restext"></h1>
-        </section>
-        <div id="preview-container">
-            <img id="imgPreview" class="file-preview" alt="Image Preview">
-            <video id="videoPreview" class="file-preview" controls></video>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Multi Model Deepfake Detection System</h2>
+                <h1>Ensuring Reliable Deepfake Safety</h1>
+                <p>Our cutting-edge tools utilize AI to detect deepfake content across various media, ensuring the integrity and authenticity of your digital communications.</p>
+                <a href="#" class="btn-discover">Discover More</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/Banner_pic_1.png" alt="Hero Image">
+            </div>
         </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      const text = document.getElementById("restext");
-      const form = document.getElementById('uploadForm');
-      const fileInput = document.getElementById('file');
-      const imgPreview = document.getElementById('imgPreview');
-      const videoPreview = document.getElementById('videoPreview');
+    </section>
+    <h2 id="head">Our Services</h2>
+    <section class="services-section">
+        <div class="container">
 
-      form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      text.style.color = "white";
-      text.innerHTML = "Detecting...";
-
-      const fileInput = document.getElementById('file');
-      const file = fileInput.files[0];
-
-      if (!file) {
-        alert("Please select a file.");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append('file', file );
-
-      try {
-        const response = await fetch('http://localhost:3000/detect', {
-            method: 'POST',
-            body: formData
-        });
-
-        const result = await response.json();
-
-        console.log(result);
-        if(result.predictions[0].prediction === "Fake"){
-          text.style.color = "red";
-        }
-        else{
-          text.style.color = "green";
-        }
-        text.innerHTML = `The media is suspected to be ${result.predictions[0].prediction} with ${parseInt(parseFloat(result.predictions[0].probability)*100)}% chance`
-
-      } catch (error) {
-          console.error('Error uploading file:', error);
-    }
-});
-
-fileInput.addEventListener('change', () => {
-          const file = fileInput.files[0];
-          const fileType = file.type;
-          imgPreview.style.display = 'none';
-          videoPreview.style.display = 'none';
-          if (fileType.startsWith('image/')) {
-              imgPreview.src = URL.createObjectURL(file);
-              imgPreview.style.display = 'block';
-          }
-          else if (fileType.startsWith('video/')) {
-              videoPreview.src = URL.createObjectURL(file);
-              videoPreview.style.display = 'block';
-          }
-      });
-    </script>
+            <div class="service-card">
+                <h3>AI Text Detection</h3>
+                <p>Our AI-powered text detection system identifies manipulated or fabricated text content, helping you to spot potential deepfakes with accuracy.</p>
+                <a href="/text">Learn More ➔</a>
+            </div>
+            <div class="service-card highlight">
+                <h3>Video & Image Deepfake Detection</h3>
+                <p>Using advanced algorithms, we analyze video and image content to detect alterations and deepfakes, ensuring the authenticity of visual media.</p>
+                <a href="/visualmedia">Learn More ➔</a>
+            </div>
+            <div class="service-card">
+                <h3>Audio Fake Detection</h3>
+                <p>Our audio analysis tools detect synthetic or altered audio content, providing a reliable method to identify fake audio and protect against misinformation.</p>
+                <a href="/audio">Learn More ➔</a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
