@@ -3,9 +3,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const resultsDiv = document.getElementById('results');
     const percentageText = document.getElementById('percentageText');
     if (resultsDiv && percentageText) {
-      var prediction = message.data.predictions[0].prediction;
+      var prediction = message.data.predictions[0].prediction.toLowerCase();
       var probability = parseInt(parseFloat(message.data.predictions[0].probability) * 100);
-      if(prediction === "Fake"){
+      if(prediction === "fake"){
         document.getElementById('themeStylesheet').setAttribute('href', 'fakeresult.css');
       } else {
           document.getElementById('themeStylesheet').setAttribute('href', 'result.css');
@@ -23,7 +23,7 @@ function updatePercentageCircle(percentage, prediction) {
 
   let currentPercentage = 0;
   const increment = percentage > currentPercentage ? 1 : -1;
-  const color = prediction === 'Fake' ? '#f44336' : '#4caf50';
+  const color = prediction === 'fake' ? '#f44336' : '#4caf50';
   const animate = setInterval(() => {
       currentPercentage += increment;
       if ((increment > 0 && currentPercentage >= percentage) || (increment < 0 && currentPercentage <= percentage)) {

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "RealEyes",
+  "name": "The RealEye",
   "version": "1.0",
-  "description": "Detect Deepfake Image, Video, Audio and AI-Generated txt with RealEyes",
+  "description": "Detect Deepfake Image, Video, Audio and AI-Generated txt with The RealEye",
   "permissions": [
     "contextMenus",
     "activeTab",

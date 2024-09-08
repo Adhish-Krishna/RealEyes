@@ -50,7 +50,7 @@ app.get("/visualmedia",(req,res)=>{
 app.post("/text", upload.none(), async (req, res) => {
     const { text } = req.body;
     try {
-        let response = await axios.post("https://xhfbs62b-5000.inc1.devtunnels.ms/classify", {
+        let response = await axios.post(" http://127.0.0.1:8000/classify", {
             text: text
         });
         let confidence = response.data.confidence;

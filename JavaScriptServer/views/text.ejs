@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Verification</title>
-    <link rel="stylesheet" href="/styles/real.css">
+    <title>The RealEye - AI Text Detection</title>
+    <link  id="themeStylesheet" rel="stylesheet" href="/styles/real.css">
 </head>
 
 <body>
     <header class="header">
         <div class="container">
             <div class="logo">
-                <h1>RealEyes</h1>
+                <h1>The RealEye</h1>
             </div>
         </div>
     </header>
@@ -20,7 +20,7 @@
     <div class="main-content">
         <section class="hero">
             <div class="hero-content">
-                <h2>Detect AI-Generated Text with RealEyes</h2>
+                <h2>Detect AI-Generated Text with The RealEye</h2>
             </div>
         </section>
 
@@ -42,14 +42,14 @@
             var formData = new FormData();
             formData.append('text', inputText);
 
-            fetch('/detect', {
+            fetch('/text', {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
-                var prediction = data.predictions[0].prediction;
-                var probability = parseInt(parseFloat(data.predictions[0].probability) * 100);
+                var prediction = data.result;
+                var probability = parseInt(data.confidence);
                 document.getElementById('resultText').innerText = `The text is suspected to be ${prediction} with ${probability}% chance`;
                 var stylesheet = prediction === 'Fake' ? '/styles/fake.css' : '/styles/real.css';
                 document.getElementById('themeStylesheet').setAttribute('href', stylesheet);
