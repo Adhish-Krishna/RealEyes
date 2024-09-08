@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background: linear-gradient(45deg, #330000, #000000); /* Changed gradient to red tones */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: transparent;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: black;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    text-decoration: none;
+    color: #cc0000; /* Changed to red */
+    font-size: 3rem;
+    margin: 0;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav ul li {
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav ul li a:hover {
+    color: #cc0000; /* Changed to red */
+    transform: scale(1.1);
+}
+
+.contact-btn {
+    background-color: #cc0000; /* Changed to red */
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #990000; /* Darker red */
+    transform: scale(1.05);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 24px;
+    color: #cc0000; /* Changed to red */
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.input-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.input-section textarea {
+    width: 80%;
+    max-width: 600px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    animation: blinkRed 1.5s infinite; /* Changed to blinkRed */
+}
+
+.btn-discover {
+    background-color: #cc0000; /* Changed to red */
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.btn-discover:hover {
+    background-color: #990000; /* Darker red */
+    transform: scale(1.05);
+}
+
+#resultContainer {
+    margin-top: 20px;
+    max-width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1c1c1c;
+    color: #ccc;
+    box-shadow: 0 4px 20px rgba(204, 0, 0, 0.7); /* Changed to red */
+    position: relative; /* Ensure positioning context for pseudo-element */
+    overflow: hidden; /* Ensures pseudo-element does not affect layout */
+    z-index: 1; /* Keep content above pseudo-element */
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    animation: blinkRed 1.5s infinite;
+
+}
+#resultContainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    background: #D30000; /* Red background */
+    transform: translateX(-100%); /* Start fully off-screen to the left */
+    transition: transform 0.7s ease-in-out;
+    z-index: -1;/* Behind the content to ensure text is visible */ /*Behind the content to ensure text is visible */
+}
+#resultContainer:hover::before {
+    transform: translateX(0%); /* Move the gradient to the left */
+}
+
+#resultContainer:hover {
+    transform: translateY(-5px); /* Lift the container slightly */
+    box-shadow: 0 4px 20px rgba(211, 0, 0, 0.7); /* Increased shadow intensity */
+    border: 1px solid #D30000; /* Red border on hover */
+}
+
+
+@keyframes blinkRed { /* Changed animation to red */
+    0% { box-shadow: 0 0 10px 5px rgba(204, 0, 0, 0.7); }
+    50% { box-shadow: 0 0 20px 10px rgba(204, 0, 0, 0.7); }
+    100% { box-shadow: 0 0 10px 5px rgba(204, 0, 0, 0.7); }
+}
+
+.footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: transparent;
+}

@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "RealEyes",
+  "version": "1.0",
+  "description": "Detect Deepfake Image, Video, Audio and AI-Generated txt with RealEyes",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "http://*/",
+    "https://*/",
+    "chrome-extension://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}

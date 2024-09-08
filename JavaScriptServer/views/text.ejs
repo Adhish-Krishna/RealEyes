@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Verification</title>
+    <link rel="stylesheet" href="/styles/real.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>RealEyes</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Detect AI-Generated Text with RealEyes</h2>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <form id="textForm">
+                <textarea id="inputText" rows="5" placeholder="Enter your text here..."></textarea>
+                <button type="submit" class="btn-discover">Check Text</button>
+            </form>
+            <div id="resultContainer" class="service-card">
+                <h3 id="resultHeading">Result</h3>
+                <p id="resultText">Your text analysis result will appear here.</p>
+            </div>
+        </section>
+    </div>
+    <script>
+        document.getElementById('textForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var inputText = document.getElementById('inputText').value;
+            var formData = new FormData();
+            formData.append('text', inputText);
+
+            fetch('/detect', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var prediction = data.predictions[0].prediction;
+                var probability = parseInt(parseFloat(data.predictions[0].probability) * 100);
+                document.getElementById('resultText').innerText = `The text is suspected to be ${prediction} with ${probability}% chance`;
+                var stylesheet = prediction === 'Fake' ? '/styles/fake.css' : '/styles/real.css';
+                document.getElementById('themeStylesheet').setAttribute('href', stylesheet);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('resultText').innerText = 'An error occurred while processing your request.';
+            });
+        });
+    </script>
+</body>
+
+</html>
