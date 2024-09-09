@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The RealEye</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
     <header class="header">
@@ -21,7 +21,7 @@
                 <h2>Multi Model Deepfake Detection System</h2>
                 <h1>Ensuring Reliable Deepfake Safety</h1>
                 <p>Our cutting-edge tools utilize AI to detect deepfake content across various media, ensuring the integrity and authenticity of your digital communications.</p>
-                <a href="#" class="btn-discover">Discover More</a>
+                <a class="btn-discover">Discover More</a>
             </div>
             <div class="hero-image">
                 <img src="images/Banner_pic_1.png" alt="Hero Image">
@@ -49,5 +49,15 @@
             </div>
         </div>
     </section>
+    <script>
+        document.querySelector('.btn-discover').addEventListener('click', function(event) {
+          event.preventDefault();
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+          });
+        });
+    </script>
+
 </body>
 </html>
