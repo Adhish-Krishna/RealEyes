@@ -19,7 +19,8 @@
 ### Setting up and running the Flask Servers
 -   **Download Models from Drive:**
     - ***Audio Deepfake Detection Service:***
-      - Downlaod the folder from [here]() and place it inside `DeepfakeAudioDetection` folder.
+      - Downlaod the folder from [here](https://drive.google.com/drive/folders/1EWklqA0wg0rnZWeryTW4dxbAw76lbRjU?usp=sharing) and place it inside `DeepfakeAudioDetection` folder.
+      - The folder structure should be like this `DeepfakeAudioDetection/wav2vec2-base-finetuned-ks/checkpoint-841`
     - ***AI Text Detection service:***
       - Downlaod the files from [here](https://drive.google.com/drive/folders/1fDZMmW6jVsaXM_EkJBCHU1Sm9Gk-7F4h?usp=sharing) and place them inside `text_detection/final_model` folder.
 
