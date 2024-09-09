@@ -16,26 +16,49 @@
     ```
     npm i
     ```
-### Setup the Flask Server
-  - ```
-    cd Model
-    ```
-    ```
-    pip install -r requirements.txt
-    ```
+### Setting up and running the Flask Servers
+-   **Download Models from Drive:**
+    - ***Audio Deepfake Detection Service:***
+      - Downlaod the folder from [here]() and place it inside `DeepfakeAudioDetection` folder.
+    - ***AI Text Detection service:***
+      - Downlaod the files from [here](https://drive.google.com/drive/folders/1fDZMmW6jVsaXM_EkJBCHU1Sm9Gk-7F4h?usp=sharing) and place them inside `text_detection/final_model` folder.
+
+-   **Setting up Deepfake Image/Video Detection Service:**
+    - ```
+      cd Model
+      ```
+      ```
+      pip install requirements.txt
+      ```
+      ```
+      python app.py
+      ```
+
+-   **Setting up Deepfake Audio Detection Service:**
+    - ```
+      cd DeepfakeAudioDetection
+      ```
+      ```
+      python app.py
+      ```
+
+-   **Setting up AI Text Detection Service:**
+    - ```
+      cd text_detection
+      ```
+      ```
+      pip install requirements.txt
+      ```
+      ```
+      python servercheck.py
+      ```
+
 ### Running the NodeJS Server
   - ```
     cd JavaScriptServer
     ```
     ```
     npm start
-    ```
-### Running the Flask Server
-  - ```
-    cd Model
-    ```
-    ```
-    python app.py
     ```
 ### Accessing RealEyes
   - Visit http://localhost:3000 to access RealEyes
